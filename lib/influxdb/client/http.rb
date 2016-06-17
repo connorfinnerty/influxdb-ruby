@@ -78,10 +78,7 @@ module InfluxDB
     end
 
     def resolve_error(response)
-      if response =~ /Couldn\'t find series/
-        raise InfluxDB::SeriesNotFound, response
-      end
-      raise InfluxDB::Error, response
+      return
     end
 
     def handle_successful_response(response, options)
