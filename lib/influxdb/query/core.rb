@@ -84,8 +84,12 @@ module InfluxDB
       end
 
       def fetch_series(response)
-        response.fetch('results'.freeze, []).flat_map do |result|
-          result.fetch('series'.freeze, [])
+        if response
+          response.fetch('results'.freeze, []).flat_map do |result|
+            result.fetch('series'.freeze, [])
+          end
+        else
+          []
         end
       end
 
